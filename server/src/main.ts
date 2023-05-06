@@ -13,7 +13,7 @@ async function bootstrap() {
     )
     .setVersion('1.0')
     .addTag('Buildings')
-    .addTag('TvPlan')
+    .addTag('TvPlans')
     .addTag('Customers')
     .build();
 
