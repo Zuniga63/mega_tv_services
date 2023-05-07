@@ -7,6 +7,8 @@ export class BuildingsService {
   constructor(private prisma: PrismaService) {}
 
   findAll(): Promise<Building[]> {
-    return this.prisma.building.findMany();
+    return this.prisma.building.findMany({
+      include: { subscritions: { include: { tvPlan: true } } },
+    });
   }
 }
