@@ -26,7 +26,6 @@ model Customer {
   lastName     String         @db.VarChar(45)
   email        String
   phoneNumber  String         @db.VarChar(20)
-  apt          String
   subscritions Subscription[]
 }
 
