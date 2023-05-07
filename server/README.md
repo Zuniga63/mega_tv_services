@@ -38,7 +38,7 @@ API to manage Mega TV Service Subscriptions
 ```bash
 pnpm install
 
-#Create the env file and add Database credentials
+#Create the env file and add Database and port credentials
 cp .env.example .env
 
 # Create the client of prisma
@@ -68,7 +68,7 @@ $ pnpm run start:prod
 
 ## Documentation
 
-The API documentation find in <http://localhost:3000/api>
+The API documentation find in <http://localhost:{PORT}/api>
 
 ![Documentation](https://user-images.githubusercontent.com/50376585/236655634-c05524e3-bb86-4ae4-b5e0-39e99b0bb988.gif)
 
