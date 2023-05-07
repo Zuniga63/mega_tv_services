@@ -2,9 +2,6 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
     <p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
@@ -24,26 +21,56 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+API to manage Mega TV Service Subscriptions
+
+## Entity Relation Diagram
+
+![ER](https://user-images.githubusercontent.com/50376585/236594100-e11b45de-18ed-403f-b4b1-a1222847a00e.png)
+
+**Building**: This entity store information of the building in witch Mega Tv Service can install.
+
+**Customer**: Data of the customer requesting the installation
+
+**TvPlan**: The company's current plans
 
 ## Installation
 
 ```bash
-$ npm install
+pnpm install
+
+#Create the env file and add Database credentials
+cp .env.example .env
+
+# Create the client of prisma
+prisma generate
+
+# Generate the Migrations and seed
+pnpm prisma migrate dev --name init
+
+# For only seed
+pnpm prisma db seed
 ```
+
+For run
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+$ pnpm run start
 
 # watch mode
-$ npm run start:dev
+$ pnpm run start:dev
 
 # production mode
-$ npm run start:prod
+$ pnpm run start:prod
 ```
+
+## Documentation
+
+The API documentation find in <http://localhost:3000/api>
+
+![Documentation](https://user-images.githubusercontent.com/50376585/236655634-c05524e3-bb86-4ae4-b5e0-39e99b0bb988.gif)
 
 ## Test
 
@@ -64,9 +91,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Andrés Zuñiga](https://github.com/Zuniga63)
 
 ## License
 
