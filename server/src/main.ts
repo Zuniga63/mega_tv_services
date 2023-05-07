@@ -1,6 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
+
+import validationConfig from './config/validationPipe.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,7 +18,10 @@ async function bootstrap() {
     .addTag('Buildings')
     .addTag('TvPlans')
     .addTag('Customers')
+    .addTag('Subscriptions')
     .build();
+
+  app.useGlobalPipes(new ValidationPipe(validationConfig));
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
