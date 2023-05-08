@@ -1,10 +1,18 @@
 "use client";
 
 import Button from "@/components/Button";
+import { resetSubscription } from "@/features/Subscription";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
 
 export default function Home() {
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const goToSubscription = () => {
+    dispatch(resetSubscription());
+    router.push("/subscriptions");
+  };
 
   return (
     <main className="flex flex-col justify-center items-center min-h-screen w-10/12 mx-auto">
@@ -16,9 +24,7 @@ export default function Home() {
           Are you ready to enjoy ultra-best service
         </p>
       </section>
-      <Button onClick={() => router.push("/subscription")}>
-        Let&apos;s do it
-      </Button>
+      <Button onClick={goToSubscription}>Let&apos;s do it</Button>
     </main>
   );
 }
