@@ -1,7 +1,8 @@
 import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
+import { subscriptionReducer } from "@/features/Subscription";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { subscriptionPage: subscriptionReducer },
   devTools: process.env.NODE_ENV !== "production",
 });
 
