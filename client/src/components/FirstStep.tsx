@@ -8,6 +8,7 @@ import {
   updateFirtsName,
   updateLastName,
 } from "@/features/Subscription";
+import StepCard from "./StepCard";
 
 function FirstStep() {
   const [firstName, setFirstName] = useState("");
@@ -29,32 +30,26 @@ function FirstStep() {
   }, [lastName]);
 
   return (
-    <section>
-      <div className="mb-20">
-        <p className="text-center text-xl mb-8">
-          Awesome! Lest&apos;s get started with the basics.
-        </p>
-
-        <div className="w-10/12 mx-auto flex flex-col gap-y-3">
-          <TextInput
-            title="First Name"
-            placeholder="First Name"
-            value={firstName}
-            onChange={setFirstName}
-          />
-          <TextInput
-            title="Last Name"
-            placeholder="Last Name"
-            value={lastName}
-            onChange={setLastName}
-          />
-        </div>
+    <StepCard
+      title="Awesome! Lest's get started with the basics."
+      action={goNextStep}
+      actionContent="Next"
+    >
+      <div className="w-10/12 mx-auto flex flex-col gap-y-3">
+        <TextInput
+          title="First Name"
+          placeholder="First Name"
+          value={firstName}
+          onChange={setFirstName}
+        />
+        <TextInput
+          title="Last Name"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={setLastName}
+        />
       </div>
-
-      <div className="flex justify-center">
-        <Button onClick={goNextStep}>Next</Button>
-      </div>
-    </section>
+    </StepCard>
   );
 }
 
