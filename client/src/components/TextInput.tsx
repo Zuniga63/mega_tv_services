@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { HTMLInputTypeAttribute, useState } from "react";
 
 type Props = {
   title?: string;
@@ -7,6 +7,7 @@ type Props = {
   value?: string;
   onChange(value: string): void;
   disabled?: boolean;
+  type?: HTMLInputTypeAttribute;
 };
 
 function TextInput({
@@ -15,6 +16,7 @@ function TextInput({
   onChange,
   title,
   disabled = false,
+  type = "text",
 }: Props) {
   return (
     <div className="relative">
@@ -26,7 +28,7 @@ function TextInput({
         </span>
       )}
       <input
-        type="text"
+        type={type}
         className="border border-gray-600 px-4 py-2 text-xs block w-full rounded focus:outline-none text-blue-600 disabled:border-gray-400 disabled:text-gray-400"
         placeholder={placeholder?.toUpperCase()}
         value={value}
