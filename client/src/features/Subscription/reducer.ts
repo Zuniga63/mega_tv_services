@@ -5,6 +5,8 @@ import {
   nextStep,
   prevStep,
   resetSubscription,
+  selectBuilding,
+  unSelectBuilding,
   updateFirtsName,
   updateLastName,
 } from "./actions";
@@ -15,18 +17,27 @@ const initialState: SubscriptionState = {
   step: 1,
   maxStep: 4,
   buildings: [],
+  buildingSelected: undefined,
   tvPlans: [],
 };
 
 export const subscriptionReducer = createReducer(initialState, (builder) => {
+  // --------------------------------------------------------------------------
+  // FETCH DATA
+  // --------------------------------------------------------------------------
   builder.addCase(fetchBuilding.fulfilled, (state, { payload }) => {
     state.buildings = payload;
   });
+
   builder.addCase(resetSubscription, (state) => {
     state.firstName = undefined;
     state.lastName = undefined;
     state.step = 1;
   });
+
+  // --------------------------------------------------------------------------
+  // UPDATE STEP
+  // --------------------------------------------------------------------------
   builder
     .addCase(nextStep, (state) => {
       const { step: currentStep, maxStep } = state;
@@ -37,13 +48,32 @@ export const subscriptionReducer = createReducer(initialState, (builder) => {
       state.step = currentStep > 1 ? currentStep - 1 : currentStep;
     });
 
+  // --------------------------------------------------------------------------
+  // UPDATE CUSTOMER DATA
+  // --------------------------------------------------------------------------
   builder.addCase(updateFirtsName, (state, { payload }) => {
     state.firstName = payload;
   });
 
   builder.addCase(updateLastName, (state, { payload }) => {
-    state.firstName = payload;
+    state.lastName = payload;
   });
+
+  // --------------------------------------------------------------------------
+  // UPDATE ADDRESS
+  // --------------------------------------------------------------------------
+  builder
+    .addCase(selectBuilding, (state, { payload }) => {
+      if (payload) {
+        const building = state.buildings.find((b) => b.id === payload);
+        if (building) {
+          state.buildingSelected = building;
+        }
+      }
+    })
+    .addCase(unSelectBuilding, (state) => {
+      state.buildingSelected = undefined;
+    });
 });
 
 export default subscriptionReducer;

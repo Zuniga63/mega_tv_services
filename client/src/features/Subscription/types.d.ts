@@ -13,6 +13,7 @@ export type SubscriptionState = {
   phoneNumber?: string;
   email?: string;
   step: number;
+  buildingSelected?: IBuilding;
   maxStep: number;
   buildings: IBuilding[];
   tvPlans: any[];

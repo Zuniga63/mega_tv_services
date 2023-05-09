@@ -4,6 +4,9 @@ import { IBuilding } from "./types";
 
 const url = process.env.NEXT_PUBLIC_URL_API;
 
+// --------------------------------------------------------------------------
+// FETCH DATA
+// --------------------------------------------------------------------------
 export const fetchBuilding = createAsyncThunk(
   "subscription/fetchBuilding",
   async () => {
@@ -18,12 +21,26 @@ export const fetchBuilding = createAsyncThunk(
 
 export const resetSubscription = createAction("subscription/reset");
 
+// --------------------------------------------------------------------------
+// UPDATE STEP
+// --------------------------------------------------------------------------
 export const nextStep = createAction("subscription/nextStep");
 export const prevStep = createAction("subscription/prevStep");
 
+// --------------------------------------------------------------------------
+// UPDATE CUSTOMER DATA
+// --------------------------------------------------------------------------
 export const updateFirtsName = createAction<string>(
   "subscription/updateFirtsName"
 );
 export const updateLastName = createAction<string>(
   "subscription/updateLastName"
 );
+
+// --------------------------------------------------------------------------
+// UPDATE ADDRESS
+// --------------------------------------------------------------------------
+export const selectBuilding = createAction<number>(
+  "subscription/selectBuilding"
+);
+export const unSelectBuilding = createAction("subscription/unSelectBuilding");
