@@ -35,7 +35,7 @@ function FirstStep() {
       action={goNextStep}
       actionContent="Next"
     >
-      <div className="w-10/12 mx-auto flex flex-col gap-y-3">
+      <div className="flex flex-col gap-y-3">
         <TextInput
           title="First Name"
           placeholder="First Name"

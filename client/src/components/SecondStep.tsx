@@ -63,7 +63,7 @@ function SecondStep() {
       disabledAction={!Boolean(selectBuilding) || !Boolean(apt)}
     >
       <div className="relative mb-40">
-        <div className="grid grid-cols-4 gap-x-2 max-w-xl mb-4">
+        <div className="grid grid-cols-4 gap-x-2 mb-4">
           <div className="col-span-3">
             <TextInput
               title="Please Type in your street address"
