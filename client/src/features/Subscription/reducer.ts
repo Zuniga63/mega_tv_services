@@ -48,7 +48,7 @@ export const subscriptionReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(nextStep, (state) => {
       const { step: currentStep, maxStep } = state;
-      state.step = currentStep <= maxStep ? currentStep + 1 : currentStep;
+      state.step = currentStep < maxStep ? currentStep + 1 : currentStep;
     })
     .addCase(prevStep, (state) => {
       const { step: currentStep } = state;
