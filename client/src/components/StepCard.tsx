@@ -9,6 +9,7 @@ type Props = {
   children: ReactNode;
   action?(): void;
   actionContent?: string;
+  disabledAction?: boolean;
 };
 
 function StepCard({
@@ -16,6 +17,7 @@ function StepCard({
   description,
   action,
   actionContent,
+  disabledAction = false,
   children,
 }: Props) {
   const { step, maxStep } = useAppSelector(subscriptionSelector);
@@ -29,7 +31,13 @@ function StepCard({
       {children}
 
       <footer className="mt-8 flex flex-col justify-center items-center">
-        <div>{action && <Button onClick={action}>{actionContent}</Button>}</div>
+        <div>
+          {action && (
+            <Button onClick={action} disabled={disabledAction}>
+              {actionContent}
+            </Button>
+          )}
+        </div>
         <span className="mt-4 uppercase text-xs text-neutral-300">
           Step {step} of {maxStep}
         </span>
