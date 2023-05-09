@@ -2,7 +2,11 @@
 "use client";
 import FirstStep from "@/components/FirstStep";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { fetchBuilding, subscriptionSelector } from "@/features/Subscription";
+import {
+  fetchBuildings,
+  fetchTvPlans,
+  subscriptionSelector,
+} from "@/features/Subscription";
 import SecondStep from "@/components/SecondStep";
 import { useEffect } from "react";
 
@@ -10,7 +14,8 @@ export default function SubscriptionPage() {
   const { step } = useAppSelector(subscriptionSelector);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchBuilding());
+    dispatch(fetchBuildings());
+    dispatch(fetchTvPlans());
   }, []);
 
   return (

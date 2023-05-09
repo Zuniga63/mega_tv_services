@@ -7,6 +7,12 @@ export interface IBuilding {
   zipCode: string;
 }
 
+export interface ITvPlan {
+  id: number;
+  name: string;
+  price: number;
+}
+
 export type SubscriptionState = {
   firstName?: string;
   lastName?: string;
@@ -16,5 +22,5 @@ export type SubscriptionState = {
   buildingSelected?: IBuilding;
   maxStep: number;
   buildings: IBuilding[];
-  tvPlans: any[];
+  tvPlans: ITvPlan[];
 };
