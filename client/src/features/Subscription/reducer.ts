@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { SubscriptionState } from "./types";
 import {
+  fetchBuilding,
   nextStep,
   prevStep,
   resetSubscription,
@@ -18,6 +19,9 @@ const initialState: SubscriptionState = {
 };
 
 export const subscriptionReducer = createReducer(initialState, (builder) => {
+  builder.addCase(fetchBuilding.fulfilled, (state, { payload }) => {
+    state.buildings = payload;
+  });
   builder.addCase(resetSubscription, (state) => {
     state.firstName = undefined;
     state.lastName = undefined;
