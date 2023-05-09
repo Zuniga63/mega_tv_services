@@ -1,6 +1,6 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IBuilding, ITvPlan } from "./types";
+import { IBuilding, ITvPlan, SubscribeForm } from "./types";
 
 const url = process.env.NEXT_PUBLIC_URL_API;
 
@@ -33,6 +33,17 @@ export const fetchTvPlans = createAsyncThunk(
 
 export const resetSubscription = createAction("subscription/reset");
 
+export const subscribeNewCustomer = createAsyncThunk(
+  "subscription/subscribeNewCustomer",
+  async (formData: SubscribeForm) => {
+    try {
+      await axios.post(`${url}/subscriptions`, formData);
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 // --------------------------------------------------------------------------
 // UPDATE STEP
 // --------------------------------------------------------------------------
@@ -60,3 +71,6 @@ export const selectBuilding = createAction<number>(
   "subscription/selectBuilding"
 );
 export const unSelectBuilding = createAction("subscription/unSelectBuilding");
+export const updateAptNumber = createAction<string>(
+  "subscription/updateAptNumber"
+);

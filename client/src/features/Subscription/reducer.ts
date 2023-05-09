@@ -7,7 +7,9 @@ import {
   prevStep,
   resetSubscription,
   selectBuilding,
+  subscribeNewCustomer,
   unSelectBuilding,
+  updateAptNumber,
   updateFirtsName,
   updateLastName,
   updateTvPlanId,
@@ -22,6 +24,9 @@ const initialState: SubscriptionState = {
   buildingSelected: undefined,
   tvPlans: [],
   tvPlanId: undefined,
+  loading: false,
+  isSuccess: false,
+  error: undefined,
 };
 
 export const subscriptionReducer = createReducer(initialState, (builder) => {
@@ -40,7 +45,27 @@ export const subscriptionReducer = createReducer(initialState, (builder) => {
     state.firstName = undefined;
     state.lastName = undefined;
     state.step = 1;
+    state.buildingSelected = undefined;
+    state.tvPlanId = undefined;
+    state.loading = false;
+    state.isSuccess = false;
+    state.error = undefined;
   });
+
+  builder
+    .addCase(subscribeNewCustomer.pending, (state) => {
+      state.loading = true;
+      state.isSuccess = false;
+      state.error = undefined;
+    })
+    .addCase(subscribeNewCustomer.fulfilled, (state) => {
+      state.isSuccess = true;
+      state.loading = false;
+    })
+    .addCase(subscribeNewCustomer.rejected, (state) => {
+      state.loading = false;
+      state.error = "Subscription failed, try again later.";
+    });
 
   // --------------------------------------------------------------------------
   // UPDATE STEP
@@ -86,6 +111,9 @@ export const subscriptionReducer = createReducer(initialState, (builder) => {
     })
     .addCase(unSelectBuilding, (state) => {
       state.buildingSelected = undefined;
+    })
+    .addCase(updateAptNumber, (state, { payload }) => {
+      state.aptNumber = payload;
     });
 });
 

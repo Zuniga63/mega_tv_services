@@ -34,7 +34,7 @@ function StepCard({
         )}
       </header>
 
-      <div className="w-9/12 mx-auto">{children}</div>
+      <div className=" w-11/12 sm:w-9/12 mx-auto">{children}</div>
 
       <footer className="mt-16 flex flex-col justify-center items-center">
         <div>

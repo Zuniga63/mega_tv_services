@@ -1,11 +1,6 @@
-import React, { useState } from "react";
 import StepCard from "./StepCard";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-import {
-  nextStep,
-  subscriptionSelector,
-  updateTvPlanId,
-} from "@/features/Subscription";
+import { nextStep, subscriptionSelector } from "@/features/Subscription";
 import TvPlanCard from "./TvPlanCard";
 
 function ThirdStep() {
