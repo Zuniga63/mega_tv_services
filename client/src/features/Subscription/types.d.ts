@@ -20,6 +20,7 @@ export type SubscriptionState = {
   email?: string;
   step: number;
   buildingSelected?: IBuilding;
+  tvPlanId?: number;
   maxStep: number;
   buildings: IBuilding[];
   tvPlans: ITvPlan[];

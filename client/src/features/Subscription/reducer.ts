@@ -10,6 +10,7 @@ import {
   unSelectBuilding,
   updateFirtsName,
   updateLastName,
+  updateTvPlanId,
 } from "./actions";
 
 const initialState: SubscriptionState = {
@@ -20,6 +21,7 @@ const initialState: SubscriptionState = {
   buildings: [],
   buildingSelected: undefined,
   tvPlans: [],
+  tvPlanId: undefined,
 };
 
 export const subscriptionReducer = createReducer(initialState, (builder) => {
@@ -62,6 +64,12 @@ export const subscriptionReducer = createReducer(initialState, (builder) => {
 
   builder.addCase(updateLastName, (state, { payload }) => {
     state.lastName = payload;
+  });
+
+  builder.addCase(updateTvPlanId, (state, { payload }) => {
+    state.tvPlanId = state.tvPlans.some((item) => item.id === payload)
+      ? payload
+      : undefined;
   });
 
   // --------------------------------------------------------------------------

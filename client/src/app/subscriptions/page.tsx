@@ -9,6 +9,7 @@ import {
 } from "@/features/Subscription";
 import SecondStep from "@/components/SecondStep";
 import { useEffect } from "react";
+import ThirdStep from "@/components/ThirdStep";
 
 export default function SubscriptionPage() {
   const { step } = useAppSelector(subscriptionSelector);
@@ -22,6 +23,7 @@ export default function SubscriptionPage() {
     <main className="flex flex-col justify-center items-center min-h-screen w-10/12 mx-auto">
       {step === 1 && <FirstStep />}
       {step === 2 && <SecondStep />}
+      {step === 3 && <ThirdStep />}
     </main>
   );
 }

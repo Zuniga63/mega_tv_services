@@ -49,6 +49,10 @@ export const updateLastName = createAction<string>(
   "subscription/updateLastName"
 );
 
+export const updateTvPlanId = createAction<number>(
+  "subscription/updateTvPlanId"
+);
+
 // --------------------------------------------------------------------------
 // UPDATE ADDRESS
 // --------------------------------------------------------------------------
