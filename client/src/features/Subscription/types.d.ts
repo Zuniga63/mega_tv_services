@@ -1,3 +1,12 @@
+export interface IBuilding {
+  id: number;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+}
+
 export type SubscriptionState = {
   firstName?: string;
   lastName?: string;
@@ -5,6 +14,6 @@ export type SubscriptionState = {
   email?: string;
   step: number;
   maxStep: number;
-  buildings: any[];
+  buildings: IBuilding[];
   tvPlans: any[];
 };
