@@ -6,6 +6,7 @@ import {
   nextStep,
   selectBuilding,
   subscriptionSelector,
+  updateAptNumber,
 } from "@/features/Subscription";
 import TextInput from "./TextInput";
 import BuildingCard from "./BuildingCard";
@@ -54,6 +55,10 @@ function SecondStep() {
       setAddress("");
     }
   }, [buildingSelected]);
+
+  useEffect(() => {
+    dispatch(updateAptNumber(apt));
+  }, [apt]);
 
   return (
     <StepCard
