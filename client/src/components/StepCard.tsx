@@ -24,7 +24,7 @@ function StepCard({
   return (
     <section>
       <header className="mb-8">
-        <h2 className="text-center text-xl">{title}</h2>
+        <h2 className="text-center text-xl font-display">{title}</h2>
         {description && <p>{description}</p>}
       </header>
 
